@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using FluentAssertions;
 using Soenneker.Facts.Local;
 using Soenneker.SendGrid.Client.Abstract;
 using Soenneker.Tests.FixturedUnit;
@@ -21,5 +22,6 @@ public class SendGridClientUtilTests : FixturedUnitTest
     public async Task Get_should_get_client()
     {
         var client = await _util.Get();
+        client.Should().NotBeNull();
     }
 }

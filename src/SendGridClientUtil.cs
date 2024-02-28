@@ -30,11 +30,11 @@ public class SendGridClientUtil : ISendGridClientUtil
 
             logger.LogDebug("Connecting SendGrid client...");
 
-            HttpClient httpClient = await httpClientCache.Get(nameof(SendGridClientUtil));
+           // HttpClient httpClient = await httpClientCache.Get(nameof(SendGridClientUtil));
 
-            var options = new SendGridClientOptions { ApiKey = apiKey };
+           // var options = new SendGridClientOptions { ApiKey = apiKey };
 
-            var client = new SendGridClient(httpClient, options);
+            var client = new SendGridClient(apiKey);
 
             return client;
         });
@@ -49,7 +49,7 @@ public class SendGridClientUtil : ISendGridClientUtil
     {
         GC.SuppressFinalize(this);
 
-        _httpClientCache.RemoveSync(nameof(SendGridClientUtil));
+        //_httpClientCache.RemoveSync(nameof(SendGridClientUtil));
 
         _client.Dispose();
     }
@@ -58,7 +58,7 @@ public class SendGridClientUtil : ISendGridClientUtil
     {
         GC.SuppressFinalize(this);
 
-        await _httpClientCache.Remove(nameof(SendGridClientUtil));
+        //await _httpClientCache.Remove(nameof(SendGridClientUtil));
 
         await  _client.DisposeAsync();
     }
