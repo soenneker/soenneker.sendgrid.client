@@ -24,7 +24,7 @@ public class SendGridClientUtil : ISendGridClientUtil
         _httpClientCache = httpClientCache;
         _logger = logger;
 
-        _client = new AsyncSingleton<SendGridClient>(async () =>
+        _client = new AsyncSingleton<SendGridClient>( () =>
         {
             var apiKey = config.GetValueStrict<string>("SendGrid:ApiKey");
 
