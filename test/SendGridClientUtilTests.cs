@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+using Soenneker.Facts.Local;
 using Soenneker.SendGrid.Client.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using Xunit;
@@ -15,5 +15,11 @@ public class SendGridClientUtilTests : FixturedUnitTest
     public SendGridClientUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
     {
         _util = Resolve<ISendGridClientUtil>(true);
+    }
+
+    [LocalFact]
+    public async Task Get_should_get_client()
+    {
+        var client = await _util.Get();
     }
 }
