@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -40,9 +41,9 @@ public class SendGridClientUtil : ISendGridClientUtil
         });
     }
 
-    public ValueTask<SendGridClient> Get()
+    public ValueTask<SendGridClient> Get(CancellationToken cancellationToken = default)
     {
-        return _client.Get();
+        return _client.Get(cancellationToken);
     }
 
     public void Dispose()

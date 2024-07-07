@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using System;
 using SendGrid;
+using System.Threading;
 
 namespace Soenneker.SendGrid.Client.Abstract;
 
@@ -9,5 +10,5 @@ namespace Soenneker.SendGrid.Client.Abstract;
 /// </summary>
 public interface ISendGridClientUtil : IDisposable, IAsyncDisposable
 {
-    ValueTask<SendGridClient> Get();
+    ValueTask<SendGridClient> Get(CancellationToken cancellationToken = default);
 }
