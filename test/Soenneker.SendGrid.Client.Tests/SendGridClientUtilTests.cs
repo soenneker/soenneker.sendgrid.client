@@ -4,7 +4,7 @@ using Soenneker.Facts.Local;
 using Soenneker.SendGrid.Client.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using Xunit;
-using Xunit.Abstractions;
+
 
 namespace Soenneker.SendGrid.Client.Tests;
 
