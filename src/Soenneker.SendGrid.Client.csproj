@@ -43,7 +43,7 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
         <PackageReference Include="SendGrid" Version="9.29.3" />
         <PackageReference Include="Soenneker.Extensions.Configuration" Version="3.0.572" />
-        <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="3.0.515" />
+        <PackageReference Include="Soenneker.Utils.AsyncSingleton" Version="3.0.519" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="3.0.1166" />
     </ItemGroup>
 </Project>
