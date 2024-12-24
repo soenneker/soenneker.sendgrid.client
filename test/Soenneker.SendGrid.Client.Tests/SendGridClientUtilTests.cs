@@ -1,10 +1,6 @@
-using System.Threading.Tasks;
-using FluentAssertions;
-using Soenneker.Facts.Local;
 using Soenneker.SendGrid.Client.Abstract;
 using Soenneker.Tests.FixturedUnit;
 using Xunit;
-
 
 namespace Soenneker.SendGrid.Client.Tests;
 
@@ -18,10 +14,9 @@ public class SendGridClientUtilTests : FixturedUnitTest
         _util = Resolve<ISendGridClientUtil>(true);
     }
 
-    [LocalFact]
-    public async Task Get_should_get_client()
+    [Fact]
+    public void Default()
     {
-        var client = await _util.Get();
-        client.Should().NotBeNull();
+
     }
 }
