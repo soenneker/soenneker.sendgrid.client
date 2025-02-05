@@ -1,5 +1,4 @@
 using System;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
@@ -35,9 +34,7 @@ public class SendGridClientUtil : ISendGridClientUtil
 
            // var options = new SendGridClientOptions { ApiKey = apiKey };
 
-            var client = new SendGridClient(apiKey);
-
-            return client;
+            return new SendGridClient(apiKey);
         });
     }
 

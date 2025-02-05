@@ -13,18 +13,22 @@ public static class SendGridClientUtilRegistrar
     /// <summary>
     /// Adds <see cref="ISendGridClientUtil"/> as a singleton service. <para/>
     /// </summary>
-    public static void AddSendGridClientUtilAsSingleton(this IServiceCollection services)
+    public static IServiceCollection AddSendGridClientUtilAsSingleton(this IServiceCollection services)
     {
-        services.AddHttpClientCache();
-        services.TryAddSingleton<ISendGridClientUtil, SendGridClientUtil>();
+        services.AddHttpClientCacheAsSingleton()
+                .TryAddSingleton<ISendGridClientUtil, SendGridClientUtil>();
+
+        return services;
     }
 
     /// <summary>
     /// Adds <see cref="ISendGridClientUtil"/> as a scoped service. <para/>
     /// </summary>
-    public static void AddSendGridClientUtilAsScoped(this IServiceCollection services)
+    public static IServiceCollection AddSendGridClientUtilAsScoped(this IServiceCollection services)
     {
-        services.AddHttpClientCache();
-        services.TryAddScoped<ISendGridClientUtil, SendGridClientUtil>();
+        services.AddHttpClientCacheAsSingleton()
+                .TryAddScoped<ISendGridClientUtil, SendGridClientUtil>();
+
+        return services;
     }
 }
