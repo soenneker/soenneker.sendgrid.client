@@ -1,4 +1,4 @@
-# Contributing to Soenneker.SendGrid.Client
+﻿# Contributing to Soenneker.SendGrid.Client
 
 We're excited that you're interested in contributing!
 
