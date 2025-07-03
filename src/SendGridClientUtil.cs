@@ -12,7 +12,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 namespace Soenneker.SendGrid.Client;
 
 ///<inheritdoc cref="ISendGridClientUtil"/>
-public class SendGridClientUtil : ISendGridClientUtil
+public sealed class SendGridClientUtil : ISendGridClientUtil
 {
     private readonly IHttpClientCache _httpClientCache;
     private readonly ILogger<SendGridClientUtil> _logger;
@@ -45,8 +45,6 @@ public class SendGridClientUtil : ISendGridClientUtil
 
     public void Dispose()
     {
-        GC.SuppressFinalize(this);
-
         //_httpClientCache.RemoveSync(nameof(SendGridClientUtil));
 
         _client.Dispose();
@@ -54,8 +52,6 @@ public class SendGridClientUtil : ISendGridClientUtil
 
     public async ValueTask DisposeAsync()
     {
-        GC.SuppressFinalize(this);
-
         //await _httpClientCache.Remove(nameof(SendGridClientUtil));
 
         await  _client.DisposeAsync();
