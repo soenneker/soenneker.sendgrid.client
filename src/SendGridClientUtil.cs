@@ -16,26 +16,30 @@ public sealed class SendGridClientUtil : ISendGridClientUtil
 {
     private readonly IHttpClientCache _httpClientCache;
     private readonly ILogger<SendGridClientUtil> _logger;
+    private readonly IConfiguration _config;
 
     private readonly AsyncSingleton<SendGridClient> _client;
 
     public SendGridClientUtil(IConfiguration config, IHttpClientCache httpClientCache, ILogger<SendGridClientUtil> logger)
     {
+        _config = config;
         _httpClientCache = httpClientCache;
         _logger = logger;
 
-        _client = new AsyncSingleton<SendGridClient>( () =>
-        {
-            var apiKey = config.GetValueStrict<string>("SendGrid:ApiKey");
+        _client = new AsyncSingleton<SendGridClient>(CreateClient);
+    }
 
-            logger.LogDebug("Connecting SendGrid client...");
+    private SendGridClient CreateClient()
+    {
+        var apiKey = _config.GetValueStrict<string>("SendGrid:ApiKey");
 
-           // HttpClient httpClient = await httpClientCache.Get(nameof(SendGridClientUtil));
+        _logger.LogDebug("Connecting SendGrid client...");
 
-           // var options = new SendGridClientOptions { ApiKey = apiKey };
+       // HttpClient httpClient = await httpClientCache.Get(nameof(SendGridClientUtil));
 
-            return new SendGridClient(apiKey);
-        });
+       // var options = new SendGridClientOptions { ApiKey = apiKey };
+
+        return new SendGridClient(apiKey);
     }
 
     public ValueTask<SendGridClient> Get(CancellationToken cancellationToken = default)
