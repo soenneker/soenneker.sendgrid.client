@@ -41,7 +41,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.2" />
         <PackageReference Include="SendGrid" Version="9.29.3" />
-        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.762" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.763" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="4.0.1839" />
     </ItemGroup>
 </Project>
