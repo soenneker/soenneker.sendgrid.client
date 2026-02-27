@@ -42,7 +42,7 @@
 
     <ItemGroup>
         <PackageReference Include="SendGrid" Version="9.29.3" />
-        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.773" />
+        <PackageReference Include="Soenneker.Extensions.Configuration" Version="4.0.774" />
         <PackageReference Include="Soenneker.Utils.HttpClientCache" Version="4.0.1857" />
     </ItemGroup>
 </Project>
