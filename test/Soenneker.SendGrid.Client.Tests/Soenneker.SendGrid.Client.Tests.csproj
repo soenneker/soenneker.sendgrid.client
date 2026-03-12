@@ -28,7 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.SendGrid.Client.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.SendGrid.Client\Soenneker.SendGrid.Client.csproj" />
     </ItemGroup>
 
     <ItemGroup>
