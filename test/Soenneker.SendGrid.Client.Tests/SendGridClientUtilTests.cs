@@ -1,20 +1,19 @@
 using Soenneker.SendGrid.Client.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.SendGrid.Client.Tests;
 
-[Collection("Collection")]
-public class SendGridClientUtilTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class SendGridClientUtilTests : HostedUnitTest
 {
     private readonly ISendGridClientUtil _util;
 
-    public SendGridClientUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public SendGridClientUtilTests(Host host) : base(host)
     {
         _util = Resolve<ISendGridClientUtil>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
