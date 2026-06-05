@@ -47,6 +47,9 @@ public sealed class SendGridClientUtil : ISendGridClientUtil
         return _client.Get(cancellationToken);
     }
 
+    /// <summary>
+    /// Releases resources used by the current instance.
+    /// </summary>
     public void Dispose()
     {
         //_httpClientCache.RemoveSync(nameof(SendGridClientUtil));
@@ -54,6 +57,10 @@ public sealed class SendGridClientUtil : ISendGridClientUtil
         _client.Dispose();
     }
 
+    /// <summary>
+    /// Asynchronously releases resources used by the current instance.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     public async ValueTask DisposeAsync()
     {
         //await _httpClientCache.Remove(nameof(SendGridClientUtil));

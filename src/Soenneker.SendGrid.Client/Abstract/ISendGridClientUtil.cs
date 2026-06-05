@@ -10,5 +10,10 @@ namespace Soenneker.SendGrid.Client.Abstract;
 /// </summary>
 public interface ISendGridClientUtil : IDisposable, IAsyncDisposable
 {
+    /// <summary>
+    /// Gets the value.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task containing the result of the operation.</returns>
     ValueTask<SendGridClient> Get(CancellationToken cancellationToken = default);
 }
