@@ -6,7 +6,7 @@ using Soenneker.Utils.HttpClientCache.Registrar;
 namespace Soenneker.SendGrid.Client.Registrars;
 
 /// <summary>
-/// An async thread-safe singleton for the SendGrid client
+/// Registers the lazily initialized official SendGrid client.
 /// </summary>
 public static class SendGridClientUtilRegistrar
 {

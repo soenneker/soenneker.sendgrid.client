@@ -11,19 +11,16 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.SendGrid.Client;
 
-///<inheritdoc cref="ISendGridClientUtil"/>
 public sealed class SendGridClientUtil : ISendGridClientUtil
 {
-    private readonly IHttpClientCache _httpClientCache;
     private readonly ILogger<SendGridClientUtil> _logger;
     private readonly IConfiguration _config;
 
     private readonly AsyncSingleton<SendGridClient> _client;
 
-    public SendGridClientUtil(IConfiguration config, IHttpClientCache httpClientCache, ILogger<SendGridClientUtil> logger)
+    public SendGridClientUtil(IConfiguration config, IHttpClientCache _, ILogger<SendGridClientUtil> logger)
     {
         _config = config;
-        _httpClientCache = httpClientCache;
         _logger = logger;
 
         _client = new AsyncSingleton<SendGridClient>(CreateClient);
@@ -35,10 +32,6 @@ public sealed class SendGridClientUtil : ISendGridClientUtil
 
         _logger.LogDebug("Connecting SendGrid client...");
 
-       // HttpClient httpClient = await httpClientCache.Get(nameof(SendGridClientUtil));
-
-       // var options = new SendGridClientOptions { ApiKey = apiKey };
-
         return new SendGridClient(apiKey);
     }
 
@@ -47,24 +40,13 @@ public sealed class SendGridClientUtil : ISendGridClientUtil
         return _client.Get(cancellationToken);
     }
 
-    /// <summary>
-    /// Releases resources used by the current instance.
-    /// </summary>
     public void Dispose()
     {
-        //_httpClientCache.RemoveSync(nameof(SendGridClientUtil));
-
         _client.Dispose();
     }
 
-    /// <summary>
-    /// Asynchronously releases resources used by the current instance.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
-    public async ValueTask DisposeAsync()
+    public ValueTask DisposeAsync()
     {
-        //await _httpClientCache.Remove(nameof(SendGridClientUtil));
-
-        await  _client.DisposeAsync();
+        return _client.DisposeAsync();
     }
 }
