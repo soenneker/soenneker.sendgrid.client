@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.SendGrid.Client;
 
+/// <inheritdoc cref="ISendGridClientUtil" />
 public sealed class SendGridClientUtil : ISendGridClientUtil
 {
     private readonly ILogger<SendGridClientUtil> _logger;
