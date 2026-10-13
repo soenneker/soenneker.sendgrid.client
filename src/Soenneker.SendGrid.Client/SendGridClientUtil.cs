@@ -29,7 +29,7 @@ public sealed class SendGridClientUtil : ISendGridClientUtil
 
     private SendGridClient CreateClient()
     {
-        var apiKey = _config.GetValueStrict<string>("SendGrid:ApiKey");
+        var apiKey = _config.GetStringStrict("SendGrid:ApiKey");
 
         _logger.LogDebug("Connecting SendGrid client...");
 
